@@ -5,6 +5,7 @@ import { nanoid } from 'nanoid';
 
 function App() {
   let date = new Date()
+  // eslint-disable-next-line eqeqeq
   let newDate = localStorage.getItem('date') != date.getDate()
 
   if (newDate) {
