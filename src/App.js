@@ -12,7 +12,7 @@ function App() {
     let storedTasks = JSON.parse(localStorage.getItem('tasks'))
     if (storedTasks !== null) {
       const updatedTasks = storedTasks.map(task => {
-        return {...task, completed: false}
+        return {...task, yesterdayCompleted: task.completed, completed: false}
       })
       localStorage.setItem('tasks', updatedTasks)
     }
@@ -22,7 +22,7 @@ function App() {
   const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')) === null ? [] : JSON.parse(localStorage.getItem('tasks')))
   
   const addTask = (name) => {  
-    const newTask = { id: "rem-" + nanoid(), name: name, completed: false}
+    const newTask = { id: "rem-" + nanoid(), name: name, completed: false, yesterdayCompleted: false}
     localStorage.setItem('tasks', JSON.stringify([...tasks, newTask]))
     setTasks([...tasks, newTask])
   }
@@ -36,11 +36,10 @@ function App() {
     });
     setTasks(updatedTasks);
     localStorage.setItem('tasks', JSON.stringify(updatedTasks))
-    console.log(localStorage.getItem('tasks'));
-    console.log(updatedTasks);
+    console.log(localStorage.getItem('tasks'));    
   }
  
-  const taskList = tasks.map(task => { return <Field id={task.id} name={task.name} key={task.id} completed={task.completed} toggleTaskCompleted={toggleTaskCompleted} />} )
+  const taskList = tasks.map(task => { return <Field id={task.id} name={task.name} key={task.id} completed={task.completed} toggleTaskCompleted={toggleTaskCompleted} yesterdayCompleted={task.yesterdayCompleted} />} )
   
   return (
     <div className="App">
