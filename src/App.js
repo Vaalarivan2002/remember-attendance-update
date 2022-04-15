@@ -7,20 +7,21 @@ function App() {
   let date = new Date()
   // eslint-disable-next-line eqeqeq
   let newDate = localStorage.getItem('date') != date.getDate()
-
   if (newDate) {
-    let storedTasks = JSON.parse(localStorage.getItem('tasks'))
-    if (storedTasks !== null) {
+    if (localStorage.getItem('tasks') !== null) {
+      let storedTasks = JSON.parse(localStorage.getItem('tasks'))
       const updatedTasks = storedTasks.map(task => {
         return {...task, yesterdayCompleted: task.completed, completed: false}
       })
-      localStorage.setItem('tasks', updatedTasks)
+      localStorage.setItem('tasks', JSON.stringify(updatedTasks))
     }
     localStorage.setItem('date', date.getDate())
   }
-
-  const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')) === null ? [] : JSON.parse(localStorage.getItem('tasks')))
   
+  const [tasks, setTasks] = useState(localStorage.getItem('tasks') === null ? [] : JSON.parse(localStorage.getItem('tasks')))
+  if (tasks === []) {
+    localStorage.setItem('tasks', JSON.stringify([]))
+  }
   const addTask = (name) => {  
     const newTask = { id: "rem-" + nanoid(), name: name, completed: false, yesterdayCompleted: false}
     localStorage.setItem('tasks', JSON.stringify([...tasks, newTask]))
