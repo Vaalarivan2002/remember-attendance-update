@@ -16,9 +16,9 @@ export default function Form(props) {
         props.addTask(name)
         document.getElementById('new-rem-input').value = ''
     }
-    useEffect(() => {
-      addFieldRef.current.focus() 
-    })
+    // useEffect(() => {
+    //   addFieldRef.current.focus() 
+    // })
     return (
         <form onSubmit={handleSubmit}>
         <h2 className="label-wrapper">
