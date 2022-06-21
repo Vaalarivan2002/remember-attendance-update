@@ -28,6 +28,12 @@ function App() {
     setTasks([...tasks, newTask])
   }
 
+  const deleteTask = (id) => {
+      const remainingTasks = tasks.filter(task => id !== task.id)
+      localStorage.setItem('tasks', JSON.stringify(remainingTasks))
+      setTasks(remainingTasks)
+  }
+
   const toggleTaskCompleted  = (id) => {
     const updatedTasks = tasks.map(task => {
     if (id === task.id) {
@@ -40,7 +46,7 @@ function App() {
     console.log(localStorage.getItem('tasks'));    
   }
  
-  const taskList = tasks.map(task => { return <Field id={task.id} name={task.name} key={task.id} completed={task.completed} toggleTaskCompleted={toggleTaskCompleted} yesterdayCompleted={task.yesterdayCompleted} />} )
+  const taskList = tasks.map(task => { return <Field id={task.id} name={task.name} key={task.id} completed={task.completed} toggleTaskCompleted={toggleTaskCompleted} yesterdayCompleted={task.yesterdayCompleted} deleteTask={deleteTask}/>} )
   
   return (
     <div className="App">
