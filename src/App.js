@@ -51,7 +51,7 @@ function App() {
   return (
     <div className="App">
       <div className="remapp stack-large">
-      <h1>Remember updated chores</h1>
+      <h1>Remember completed tasks</h1>
       <Form addTask={addTask}/>
       <ul className="rem-list stack-large stack-exception" aria-labelledby="list-heading" 
       >

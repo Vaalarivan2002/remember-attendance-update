@@ -23,7 +23,7 @@ export default function Form(props) {
         <form onSubmit={handleSubmit}>
         <h2 className="label-wrapper">
           <label htmlFor="new-rem-input" className="label__lg">
-            What needs to be added?
+            Add tasks...
           </label>
         </h2>
         <input
