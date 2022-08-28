@@ -1,2 +1,2 @@
-I made this React app for my personal use to prevent compulsive checking of mails. So whenever I would check my mail once early that day, I would just check the checkbox in the app and whenever I feel like checking mail again, I would just open that app to prevent this repetitive behaviour. The checkbox unchecks itself if a new day begins.
+I made this React app for my personal use to prevent compulsive checking of mails. So whenever I would check my mail once early that day, I would just check the checkbox in the app and whenever I feel like checking mail again, I would just open that app to prevent this repetitive behaviour. The checkbox unchecks itself if the site is opened on another day.
 Site link : https://main--magnificent-lebkuchen-b72fc8.netlify.app/ 
